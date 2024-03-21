@@ -1,5 +1,6 @@
 package com.FiapEShopping.model;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
@@ -25,6 +26,8 @@ public class Itens {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 	private String nome;
+	private BigDecimal preco;
+	private int quantidadeEstoque;
 
 
 }

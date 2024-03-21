@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfigurations {
 
+	
     @Autowired
     SecurityFilter securityFilter;
 
@@ -28,7 +29,9 @@ public class SecurityConfigurations {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                 		
-                		
+        
+                    	.requestMatchers(HttpMethod.GET, "/h2-console").permitAll()
+                		.requestMatchers(HttpMethod.GET, "/api/listarCarrinho").permitAll()
                 		 .requestMatchers(HttpMethod.POST, "/api/adicionarItem/*").permitAll() // Permite adicionar item ao carrinho sem autenticação
                 		.requestMatchers(HttpMethod.GET, "/listarItens").permitAll()
                 		.requestMatchers(HttpMethod.POST, "/api/criarCarrinho").permitAll()
