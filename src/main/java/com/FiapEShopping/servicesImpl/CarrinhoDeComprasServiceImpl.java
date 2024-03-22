@@ -29,43 +29,11 @@ public class CarrinhoDeComprasServiceImpl implements CarrinhoDeComprasService {
         return carrinhoDeComprasRepository.findAll();
     }
 
-    @Override
-    public void adicionarItens(UUID carrinhoId, ItemDTO itemDTO) {
-        Optional<CarrinhoDeCompras> optionalCarrinho = carrinhoDeComprasRepository.findById(carrinhoId);
-        if (optionalCarrinho.isPresent()) {
-            CarrinhoDeCompras carrinho = optionalCarrinho.get();
-            
-            Itens item = new Itens();
-            item.setNome(itemDTO.getNome());
-            
-            carrinho.adicionarItens(item);
-            carrinhoDeComprasRepository.save(carrinho);
-        } else {
-            // Tratar caso em que o carrinho não é encontrado
-        }
-    }
-
-
-    @Override
-    public void removerItens(UUID carrinhoId, UUID itensId) {
-        Optional<CarrinhoDeCompras> optionalCarrinho = carrinhoDeComprasRepository.findById(carrinhoId);
-        if (optionalCarrinho.isPresent()) {
-            CarrinhoDeCompras carrinho = optionalCarrinho.get();
-            List<Itens> itens = carrinho.getItens();
-            for (Itens Itens : itens) {
-                if (Itens.getId().equals(itensId)) {
-                    itens.remove(Itens);
-                    carrinhoDeComprasRepository.save(carrinho);
-                    return;
-                }
-            }
-        }
-        // Tratar caso em que o carrinho não é encontrado ou o Itens não está presente no carrinho
-    }
-
 	@Override
 	public CarrinhoDeCompras criarCarrinho(CarrinhoDeCompras carrinho) {
 		return carrinhoDeComprasRepository.save(carrinho);
 	}
+
+
 
 }

@@ -15,31 +15,23 @@ import com.FiapEShopping.services.ItensService;
 
 @RestController
 public class ItensController {
-	
+
 	@Autowired
 	ItensService service;
-	
+
 	@PostMapping("/cadastro")
-	public ResponseEntity<?> cadastrarItem(@RequestBody Itens obj){
+	public ResponseEntity<?> cadastrarItem(@RequestBody Itens obj) {
 		Itens novoItem = service.save(obj);
-		
+
 		return ResponseEntity.status(HttpStatus.CREATED).body(novoItem);
-		
+
 	}
-	
-	
+
 	@GetMapping("/listarItens")
-	public ResponseEntity<?> listarItens(){
+	public ResponseEntity<?> listarItens() {
 		List<Itens> listaDeItens = service.buscarTodosItens();
 		return ResponseEntity.ok(listaDeItens);
-		
-	}
-	
-	
-	
-	@GetMapping("/test")
-	public String retornaString() {
-		return "FUNCIONANDO";
+
 	}
 
 }

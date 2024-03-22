@@ -9,8 +9,6 @@ import com.FiapEShopping.model.DTO.ItemDTO;
 
 public interface CarrinhoDeComprasService {
     List<CarrinhoDeCompras> listarCarrinhos();
-    void adicionarItens(UUID carrinhoId, ItemDTO itemDto);
-    void removerItens(UUID carrinhoId, UUID itemId);
     CarrinhoDeCompras criarCarrinho (CarrinhoDeCompras carrinho);
     
     
