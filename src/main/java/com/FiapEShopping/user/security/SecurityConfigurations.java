@@ -30,6 +30,8 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorize -> authorize
                 		
         
+                		.requestMatchers(HttpMethod.POST, "/cadastro").permitAll()
+                		.requestMatchers(HttpMethod.POST, "itens-carrinho").permitAll()
                 		.requestMatchers(HttpMethod.GET, "/api/listarCarrinho").permitAll()
                 //		 .requestMatchers(HttpMethod.POST, "/api/adicionarItem/*").permitAll() 
                 		.requestMatchers(HttpMethod.GET, "/listarItens").permitAll()
@@ -40,7 +42,7 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                         .requestMatchers(HttpMethod.GET, "/users").permitAll()
                         
-                        .requestMatchers(HttpMethod.POST, "/cadastro").hasRole("ADMIN")
+//                        .requestMatchers(HttpMethod.POST, "/cadastro").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/cadastrarNovoItem").hasRole("ADMIN")
                         
                         

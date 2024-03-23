@@ -32,6 +32,8 @@ public class ItensCarrinhoController {
 
     @PostMapping
     public ItensCarrinho saveItensCarrinho(@RequestBody ItensCarrinho itensCarrinho) {
+    	System.out.println(itensCarrinho.getId());
+    	System.out.println(itensCarrinho.getItens().getId());
         return itensCarrinhoService.saveItensCarrinho(itensCarrinho);
     }
 

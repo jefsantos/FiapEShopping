@@ -20,6 +20,8 @@ public class ItensCarrinhoServiceImpl implements ItensCarrinhoService {
 
     private final ItensCarrinhoRepository itensCarrinhoRepository;
     
+    
+    
 
 
     @Autowired
@@ -32,13 +34,17 @@ public class ItensCarrinhoServiceImpl implements ItensCarrinhoService {
 
     @Override
     public ItensCarrinho saveItensCarrinho(ItensCarrinho itensCarrinho) {
-//    	Itens itens = itensCarrinho.getItens();
+
     	
-//        if (validarQuantidadeItem(itens.getId(), itensCarrinho.getQuantidade())) {
+    	
+    	System.out.println(itensCarrinho.getItens().getId());
+    	Itens itens = itensCarrinho.getItens();
+    	
+        if (validarQuantidadeItem(itens.getId(), itensCarrinho.getQuantidade())) {
             return itensCarrinhoRepository.save(itensCarrinho);
-//        } else {
-//            throw new IllegalArgumentException("A quantidade informada não é válida para o item selecionado.");
-//        }
+        } else {
+            throw new IllegalArgumentException("A quantidade informada não é válida para o item selecionado.");
+        }
     }
 
     @Override

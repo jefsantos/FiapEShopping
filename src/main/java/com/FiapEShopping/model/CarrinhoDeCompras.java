@@ -23,11 +23,11 @@ import lombok.Setter;
 public class CarrinhoDeCompras {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID id;
+	private UUID idCarrinho;
 
 
 	@OneToOne
-	@JoinColumn(name = "id_user")
+	@JoinColumn(name = "id")
 	private User user;
 
 }
